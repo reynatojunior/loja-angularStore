@@ -1,0 +1,196 @@
+/* contact-form.component.css */
+
+/* Container principal - Mobile First */
+:host {
+  display: block;
+  padding: 1rem;
+  box-sizing: border-box;
+}
+
+/* Card do formulário */
+.contact-form {
+  max-width: 100%;
+  margin: 0 auto;
+  padding: 1.5rem;
+  background: var(--surface-card, #ffffff);
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  border: 1px solid var(--surface-border, #e0e3e7);
+}
+
+/* Título do formulário */
+.contact-form__title {
+  color: var(--text-color, #2c3e50);
+  text-align: center;
+  margin-bottom: 1.5rem;
+  font-size: 1.5rem;
+  font-weight: 600;
+  position: relative;
+}
+
+.contact-form__title::after {
+  content: '';
+  position: absolute;
+  bottom: -0.5rem;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 60px;
+  height: 3px;
+  background: linear-gradient(to right, var(--primary-400, #3498db), var(--indigo-400, #9b59b6));
+  border-radius: 2px;
+}
+
+/* Grupos de campos */
+.form-group {
+  margin-bottom: 1.25rem;
+}
+
+/* Labels */
+.form-label {
+  display: block;
+  margin-bottom: 0.5rem;
+  color: var(--text-color-secondary, #6c757d);
+  font-weight: 500;
+  font-size: 0.875rem;
+}
+
+/* Campos de entrada */
+.form-control {
+  width: 100%;
+  padding: 0.75rem;
+  font-size: 1rem;
+  border: 1px solid var(--surface-border, #e0e3e7);
+  border-radius: 8px;
+  background: var(--surface-ground, #f8f9fa);
+  transition: all 0.3s ease;
+  box-sizing: border-box;
+}
+
+.form-control:focus {
+  outline: none;
+  border-color: var(--primary-400, #3498db);
+  box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.1);
+  background: var(--surface-a, #ffffff);
+}
+
+/* Textarea específico */
+textarea.form-control {
+  min-height: 120px;
+  resize: vertical;
+}
+
+/* Botão de submit */
+.submit-button {
+  width: 100%;
+  padding: 0.875rem;
+  background: linear-gradient(to right, var(--primary-400, #3498db), var(--indigo-400, #9b59b6));
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-size: 1rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  margin-top: 0.5rem;
+}
+
+.submit-button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(52, 152, 219, 0.2);
+}
+
+.submit-button:disabled {
+  background: var(--surface-border, #e0e3e7);
+  transform: none;
+  box-shadow: none;
+  cursor: not-allowed;
+  opacity: 0.7;
+}
+
+/* Validação */
+.ng-valid.ng-touched:not(form):not(.submit-button) {
+  border-left: 3px solid var(--green-500, #2ecc71);
+}
+
+.ng-invalid.ng-touched:not(form):not(.submit-button) {
+  border-left: 3px solid var(--red-500, #e74c3c);
+}
+
+/* Mensagens de erro */
+.error-message {
+  color: var(--red-500, #e74c3c);
+  font-size: 0.75rem;
+  margin-top: 0.25rem;
+  display: block;
+  animation: fadeIn 0.3s ease;
+}
+
+/* Animações */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(-5px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* Tablet (768px para cima) */
+@media (min-width: 768px) {
+  :host {
+    padding: 2rem;
+  }
+  
+  .contact-form {
+    padding: 2rem;
+    max-width: 600px;
+  }
+  
+  .contact-form__title {
+    font-size: 1.75rem;
+    margin-bottom: 2rem;
+  }
+  
+  .contact-form__title::after {
+    width: 80px;
+    height: 4px;
+    bottom: -0.75rem;
+  }
+  
+  .submit-button {
+    margin-top: 1rem;
+  }
+}
+
+/* Desktop (992px para cima) */
+@media (min-width: 992px) {
+  .contact-form {
+    padding: 2.5rem;
+  }
+  
+  .form-group {
+    margin-bottom: 1.5rem;
+  }
+  
+  .form-control {
+    padding: 0.875rem 1rem;
+  }
+}
+
+/* Telas muito grandes (1200px para cima) */
+@media (min-width: 1200px) {
+  .contact-form {
+    max-width: 700px;
+  }
+}
+
+/* Orientação paisagem em dispositivos móveis */
+@media (max-height: 500px) and (orientation: landscape) {
+  :host {
+    padding: 0.5rem;
+  }
+  
+  .contact-form {
+    padding: 1rem;
+  }
+  
+  textarea.form-control {
+    min-height: 80px;
+  }
+}
