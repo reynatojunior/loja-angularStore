@@ -1,38 +1,37 @@
-<!-- 
-<form [formGroup]="contactForm" class="contact-form" (ngSubmit)="onSubmit()">
-  <h2 class="contact-form__title">Fale Conosco</h2>
+<section class="contato-container">
+  <h1 class="titulo-contato">Contato</h1>
   
-  <div class="form-group">
-    <label for="nome" class="form-label">Nome Completo:</label>
-    <input type="text" id="nome" formControlName="nome" class="form-control" placeholder="Digite seu nome">
-    <span *ngIf="submitted && contactForm.controls['nome'].errors" class="error-message">
-      Por favor, informe seu nome
-    </span>
-  </div>
-  
-  <div class="form-group">
-    <label for="email" class="form-label">E-mail:</label>
-    <input type="email" id="email" formControlName="email" class="form-control" placeholder="seu@email.com">
-    <span *ngIf="submitted && contactForm.controls['email'].errors" class="error-message">
-      {{ contactForm.controls['email'].errors?.['required'] ? 'E-mail é obrigatório' : 'Por favor, informe um e-mail válido' }}
-    </span>
-  </div>
-  
-  <div class="form-group">
-    <label for="assunto" class="form-label">Assunto (opcional):</label>
-    <input type="text" id="assunto" formControlName="assunto" class="form-control" placeholder="Sobre o que deseja falar?">
-  </div>
-  
-  <div class="form-group">
-    <label for="mensagem" class="form-label">Mensagem:</label>
-    <textarea id="mensagem" formControlName="mensagem" rows="5" class="form-control" placeholder="Escreva sua mensagem aqui..."></textarea>
-    <span *ngIf="submitted && contactForm.controls['mensagem'].errors" class="error-message">
-      Por favor, escreva sua mensagem
-    </span>
-  </div>
-  
-  <button type="submit" class="submit-button" [disabled]="contactForm.invalid && submitted">
-    <span *ngIf="!loading">Enviar Mensagem</span>
-    <span *ngIf="loading">Enviando...</span>
-  </button>
-</form> -->
+  <form class="formulario-contato" [formGroup]="contatoForm" (ngSubmit)="enviarMensagem()">
+    <div class="form-group" style="--order: 1">
+      <label for="nome">Nome</label>
+      <input type="text" id="nome" formControlName="nome" placeholder="Seu nome completo">
+      @if (contatoForm.get('nome')?.errors?.['required'] && contatoForm.get('nome')?.touched) {
+        <small>Por favor, insira seu nome</small>
+      }
+    </div>
+
+    <div class="form-group" style="--order: 2">
+      <label for="email">Email</label>
+      <input type="email" id="email" formControlName="email" placeholder="seu@email.com">
+      @if (contatoForm.get('email')?.errors?.['required'] && contatoForm.get('email')?.touched) {
+        <small>Por favor, insira seu email</small>
+      }
+      @if (contatoForm.get('email')?.errors?.['email'] && contatoForm.get('email')?.touched) {
+        <small>Insira um email válido</small>
+      }
+    </div>
+
+    <div class="form-group" style="--order: 3">
+      <label for="mensagem">Mensagem</label>
+      <textarea id="mensagem" formControlName="mensagem" rows="5" 
+                placeholder="Como podemos te ajudar?"></textarea>
+      @if (contatoForm.get('mensagem')?.errors?.['required'] && contatoForm.get('mensagem')?.touched) {
+        <small>Por favor, escreva sua mensagem</small>
+      }
+    </div>
+
+    <button type="submit" [disabled]="contatoForm.invalid" style="--order: 4">
+      Enviar Mensagem
+    </button>
+  </form>
+</section>

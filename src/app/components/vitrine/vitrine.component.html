@@ -1,16 +1,11 @@
-<!-- <app-header></app-header> -->
-
-
 <div class="vitrine-container">
-
-    <div class="card">
-        aqui entra o conteudo do card
-    </div>
-    
-   @for (elemento of produtosService.produtos ; track elemento ) {
-     <p>nome: {{elemento.nome}}, preco: {{elemento.preco}}</p>
-   }
-
-   
-
+  <div class="card-grid"> 
+    @for (elemento of produtosService.produtos; track elemento) {
+      <div class="card"> 
+        <img [src]="elemento.imagem" width="100%" />
+        <h3>{{ elemento.nome }}</h3>
+        <p>{{ elemento.descricao }}</p>
+      </div>
+    }
+  </div>
 </div>
